@@ -1,0 +1,33 @@
+footer {
+  background-color: #33333322;
+  color: #0a0404;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+footer li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+footer li:last-child {
+  margin-right: 0;
+}
+
+footer a {
+  color: #0a0404;
+  text-decoration: none;
+}
+
+footer p {
+  margin: 0;
+}

@@ -1,0 +1,89 @@
+/* .productDisplay {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 30px;
+} */
+.productCard {
+  max-width: 300px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.361);
+  /* box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.3); */
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px;
+  margin-top: 30px;
+  height: 415px;
+}
+.productCard:hover {
+  box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.096),
+    1px 1px 5px rgba(0, 0, 0, 0.114);
+}
+.productImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 250px;
+}
+.productImage img {
+  width: inherit;
+  height: 180px;
+  border-radius: 10px;
+  margin-left: 25px;
+}
+/* .productImage img:hover {
+    height: 200px;
+    border-radius: 10px;
+  } */
+.productPrice {
+  margin-top: 5px;
+}
+.itemPrice,
+.rupee {
+  font-size: 25px;
+  font-weight: 500;
+  color: black;
+}
+.cutPrice {
+  margin: 5px;
+  font-size: 15px;
+  font-weight: 200;
+  text-decoration: line-through;
+}
+.productName {
+  text-transform: capitalize;
+  font-weight: 150;
+  margin-bottom: 0px;
+}
+.discount {
+  /* margin: 5px; */
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(39, 224, 101);
+}
+.freeDelivery {
+  padding: 3px;
+  background-color: rgba(128, 128, 128, 0.158);
+  border-radius: 10px;
+  width: 100px;
+}
+.ratingAndReview {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-left: -5px;
+}
+.star {
+  margin-left: 5px;
+  font-size: 18px;
+}
+.rating {
+  margin: 10px;
+  background-color: rgba(17, 148, 17, 0.61);
+  font-size: 20px;
+  color: white;
+  border-radius: 10px;
+  width: 60px;
+  padding-left: 10px;
+}
