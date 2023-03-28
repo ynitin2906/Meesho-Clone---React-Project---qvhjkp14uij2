@@ -1,8 +1,11 @@
 import "./SignUp.css";
 import signup from "../../images/signup.png";
-import React from "react";
+import React, { useContext } from "react";
+import { MyContext } from "../../App";
+import { Navigate } from "react-router";
 
 const SignUp = () => {
+  const mycontext = useContext(MyContext);
   return (
     <div className="body-box">
       <div className="signup-container">
@@ -10,7 +13,7 @@ const SignUp = () => {
           <img src={signup} alt="img" />
         </div>
         <div className="input-box-container">
-          <h3>Sign Up</h3>
+          <h3>Sign In</h3>
           <div className="input-1">
             <label htmlFor="email-input">Email:</label>
             <input
@@ -27,7 +30,15 @@ const SignUp = () => {
               placeholder="Enter password.."
             />
           </div>
-          <button className="continue-signup">Sign Up</button>
+          <button
+            className="continue-signup"
+            onClick={() => {
+              mycontext.onLoggedInValueChange(true);
+              <Navigate to="/cart" />;
+            }}
+          >
+            Sign In
+          </button>
         </div>
       </div>
     </div>

@@ -19,35 +19,11 @@ const Cart = () => {
             <p className="quantity-box">
               Quantity:
               <span className="quantity">1</span>
-              <span className="plus-minus-symbols">
-                <FaMinus />
+              <span className="plus-minus">
+                <button className="plus-minus-buttons">-</button>
               </span>
-              <span>
-                <FaPlus className="plus-minus-symbols" />
-              </span>
-            </p>
-            <span>Price:165</span>
-            <span className="cutted-price">215</span>
-            <span>10% off</span>
-          </div>
-        </div>
-        <div className="cart-item">
-          <div className="cart-item-image">
-            <img
-              src="https://images.unsplash.com/photo-1679421138627-76aa339a47df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              alt="img"
-            />
-          </div>
-          <div className="cart-item-info">
-            <p className="headings">Silver Stainless Steel</p>
-            <p className="quantity-box">
-              Quantity:
-              <span className="quantity">1</span>
-              <span className="plus-minus-symbols">
-                <FaMinus />
-              </span>
-              <span>
-                <FaPlus className="plus-minus-symbols" />
+              <span className="plus-minus">
+                <button className="plus-minus-buttons">+</button>
               </span>
             </p>
             <span>Price:165</span>

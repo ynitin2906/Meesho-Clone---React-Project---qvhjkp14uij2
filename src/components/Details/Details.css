@@ -32,7 +32,7 @@
   /* cursor: pointer; */
   margin: 10px;
   margin-top: 0px;
-  height: 210px;
+  height: 310px;
 }
 .product-details h2 {
   color: black;
@@ -178,3 +178,7 @@
   padding-left: 10px;
 }
 /* box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.3); */
+
+.product-description ul {
+  list-style-type: disc;
+}

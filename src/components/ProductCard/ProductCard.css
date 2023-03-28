@@ -1,9 +1,10 @@
-/* .productDisplay {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 30px;
-} */
+:root {
+  --hoverTextColor: rgb(204, 19, 127);
+  --textColor: rgb(87, 85, 85);
+}
+.productDisplay:hover {
+  color: var(--textColor);
+}
 .productCard {
   max-width: 300px;
   padding: 10px;

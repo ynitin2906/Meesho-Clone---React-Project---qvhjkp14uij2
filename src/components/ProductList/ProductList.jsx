@@ -9,7 +9,8 @@ const ProductList = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2"
+        // "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2"
+        "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products"
       );
       // console.log(response.data);
       setData(response.data);
@@ -65,6 +66,7 @@ const ProductList = () => {
           >
             {data.map((item) => (
               <ProductCard
+                id={item.id}
                 key={item.id}
                 title={item.title}
                 price={item.price}

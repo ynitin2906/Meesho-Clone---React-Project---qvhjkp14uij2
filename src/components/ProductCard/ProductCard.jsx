@@ -1,23 +1,34 @@
 import "./ProductCard.css";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 const ProductCard = (props) => {
-  const [random, setRandom] = useState(null);
-  const [originalPrice, setOriginalPrice] = useState(null);
+  const [random, setRandom] = useState(0);
+  const [originalPrice, setOriginalPrice] = useState(0);
   useEffect(() => {
     const newNumber = Math.floor(Math.random() * (20 - 10)) + 10;
     setRandom(newNumber);
 
-    const newOriginal = (props.price + props.price * (random / 100)).toFixed(0);
+    const newOriginal = (props.price + props.price * (newNumber / 100)).toFixed(
+      0
+    );
     setOriginalPrice(newOriginal);
+    // console.log(originalPrice, random);
   }, []);
-
+  // console.log(props.id);
   return (
-    <div className="productDisplay">
+    <Link
+      to={{
+        pathname: "/details/" + props.id,
+        // state: { originalPrice: originalPrice, random: random },
+      }}
+      className="productDisplay"
+    >
       <div className="productCard">
         <div className="productImage">
           <img src={props.image} />
         </div>
+
         <h4 className="productName">{props.title}</h4>
         <div className="productPrice">
           <span className="rupee">₹</span>
@@ -35,7 +46,7 @@ const ProductCard = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default ProductCard;
