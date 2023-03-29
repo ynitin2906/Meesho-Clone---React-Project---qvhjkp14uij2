@@ -1,27 +1,29 @@
 import "./ProductList.css";
 import "../ProductCard/ProductCard.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import axios from "axios";
+import { MyContext } from "../../App";
 
 const ProductList = () => {
-  const [data, setData] = useState([]);
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        // "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2"
-        "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products"
-      );
-      // console.log(response.data);
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const [data, setData] = useState([]);
+  const mycontext = useContext(MyContext);
+  // const getData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       // "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2"
+  //       "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products"
+  //     );
+  //     // console.log(response.data);
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   return (
     <div>
@@ -64,7 +66,7 @@ const ProductList = () => {
             className="product_category_display"
             id="product_category_displayId"
           >
-            {data.map((item) => (
+            {mycontext.universalData.map((item) => (
               <ProductCard
                 id={item.id}
                 key={item.id}

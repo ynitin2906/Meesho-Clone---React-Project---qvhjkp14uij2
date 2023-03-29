@@ -1,22 +1,29 @@
 import "./Details.css";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useLocation, useParams } from "react-router";
 import { useEffect } from "react";
 import axios from "axios";
+import { MyContext } from "../../App";
 
 const Details = () => {
   const params = useParams();
+  const { addToCart } = useContext(MyContext);
+  // const itemId = params.id;
+
   const [item, setItem] = useState({});
   const descriptionOfItem = item.description
     ?.split(/\./)
     .filter((line) => line.trim() !== "");
-  // const location = useLocation();
-  // const { originalPrice = 0, random = 0 } = location.state || {};
-  // console.log(originalPrice, random);
 
-  const itemsOfCart = [];
-  const addInCart = () => {};
+  const handleClick = () => {
+    addToCart({
+      id: item.id,
+      price: item.price,
+      image: item.image,
+      title: item.title,
+    });
+  };
 
   const getProductData = async () => {
     try {
@@ -25,7 +32,6 @@ const Details = () => {
           params.id
       );
       setItem(response.data);
-      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +53,7 @@ const Details = () => {
           </div>
         </div>
         <div className="cartContainer">
-          <button className="add-to-cart" onClick={addInCart}>
+          <button className="add-to-cart" onClick={handleClick}>
             Add to Cart
           </button>
         </div>
@@ -73,23 +79,12 @@ const Details = () => {
           </div>
         </div>
 
-        {/* <div className="product-size">
-          <h2>Select Size</h2>
-          <button>S</button>
-          <button>M</button>
-          <button>L</button>
-          <button>XL</button>
-          <button>XXL</button>
-        </div> */}
-
         <div className="product-details">
           <h2>Product Details</h2>
           <ul>
             <li>Category: {item.category}</li>
             <br />
-            {/* <li>Pattern:Solid</li>
-            <li>Multipack:1</li>
-            <li>Sizes: S/M/L/XL/XXL</li> */}
+
             <li className="product-description">
               Description:
               {

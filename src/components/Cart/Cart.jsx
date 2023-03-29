@@ -1,9 +1,12 @@
 import "./Cart.css";
-import React from "react";
+import React, { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
+import { MyContext } from "../../App";
 
 const Cart = () => {
+  const { cartItems } = useContext(MyContext);
+  console.log(cartItems);
   return (
     <div className="cart-container">
       <div className="cart-item-container">

@@ -2,6 +2,7 @@ import "./ProductCard.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+
 const ProductCard = (props) => {
   const [random, setRandom] = useState(0);
   const [originalPrice, setOriginalPrice] = useState(0);
@@ -13,9 +14,8 @@ const ProductCard = (props) => {
       0
     );
     setOriginalPrice(newOriginal);
-    // console.log(originalPrice, random);
   }, []);
-  // console.log(props.id);
+
   return (
     <Link
       to={{
