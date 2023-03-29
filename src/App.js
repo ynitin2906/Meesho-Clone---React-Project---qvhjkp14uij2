@@ -12,7 +12,7 @@ function App() {
   const universalData = data;
 
   const [cartItems, setCartItems] = useState([]);
-  // console.log(cartItems);
+  console.log(cartItems);
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
   };
