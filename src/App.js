@@ -1,5 +1,5 @@
 import "./App.css";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
@@ -13,8 +13,19 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
   console.log(cartItems);
+
   const addToCart = (item) => {
-    setCartItems([...cartItems, item]);
+    setCartItems([
+      ...cartItems,
+      {
+        id: item.id,
+        price: item.price,
+        image: item.image,
+        title: item.title,
+        originalPrice: item.originalPrice,
+        random: item.random,
+      },
+    ]);
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);

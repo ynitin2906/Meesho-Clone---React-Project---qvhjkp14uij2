@@ -7,26 +7,24 @@ const ProductCard = (props) => {
   const [random, setRandom] = useState(0);
   const [originalPrice, setOriginalPrice] = useState(0);
   useEffect(() => {
-    const newNumber = Math.floor(Math.random() * (20 - 10)) + 10;
+    const newNumber = Math.floor(Math.random() * (23 - 15)) + 15;
     setRandom(newNumber);
 
     const newOriginal = (props.price + props.price * (newNumber / 100)).toFixed(
       0
     );
     setOriginalPrice(newOriginal);
-  }, []);
+  }, [props.price]);
 
   return (
     <Link
-      to={{
-        pathname: "/details/" + props.id,
-        // state: { originalPrice: originalPrice, random: random },
-      }}
+      to={"/details/" + props.id}
+      state={{ originalPrice: originalPrice, random: random }}
       className="productDisplay"
     >
       <div className="productCard">
         <div className="productImage">
-          <img src={props.image} />
+          <img alt="img" src={props.image} />
         </div>
 
         <h4 className="productName">{props.title}</h4>

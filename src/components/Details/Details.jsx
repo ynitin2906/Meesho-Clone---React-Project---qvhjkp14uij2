@@ -9,7 +9,8 @@ import { MyContext } from "../../App";
 const Details = () => {
   const params = useParams();
   const { addToCart } = useContext(MyContext);
-  // const itemId = params.id;
+  const { state } = useLocation();
+  // console.log(state);
 
   const [item, setItem] = useState({});
   const descriptionOfItem = item.description
@@ -22,6 +23,8 @@ const Details = () => {
       price: item.price,
       image: item.image,
       title: item.title,
+      originalPrice: state.originalPrice,
+      random: state.random,
     });
   };
 
@@ -39,7 +42,7 @@ const Details = () => {
 
   useEffect(() => {
     getProductData();
-  }, []);
+  });
   return (
     <div className="container">
       <div className="product-image">
@@ -65,8 +68,8 @@ const Details = () => {
           <div className="product-price">
             <span className="rupee-symbol">₹</span>
             <span className="item-price">{item.price}</span>
-            <span className="cut-price">1000</span>
-            <span className="discount-offer">10% off</span>
+            <span className="cut-price">{state.originalPrice}</span>
+            <span className="discount-offer">{state.random}% off</span>
             <p>₹100 discount on 1st order</p>
             <p className="free-delivery">Free Delivery</p>
             <div className="rating-and-review">

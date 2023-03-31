@@ -1,7 +1,7 @@
 import "./Cart.css";
 import React, { useContext } from "react";
-import { FaPlus } from "react-icons/fa";
-import { FaMinus } from "react-icons/fa";
+// import { FaPlus } from "react-icons/fa";
+// import { FaMinus } from "react-icons/fa";
 import { MyContext } from "../../App";
 import emptyCart from "../../images/emptyCart.png";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ const Cart = () => {
     <>
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <img src={emptyCart} />
+          <img alt="img" src={emptyCart} />
           Your cart is empty
           <Link to="/">
             <div>
@@ -41,9 +41,9 @@ const Cart = () => {
                       <button className="plus-minus-buttons">+</button>
                     </span>
                   </p>
-                  <span>Price:{item.price}</span>
-                  <span className="cutted-price">215</span>
-                  <span>10% off</span>
+                  <span className="main-price">Price:{item.price}</span>
+                  <span className="cutted-price">{item.originalPrice}</span>
+                  <span className="discount-cart-item">{item.random}% off</span>
                 </div>
               </div>
             ))}
