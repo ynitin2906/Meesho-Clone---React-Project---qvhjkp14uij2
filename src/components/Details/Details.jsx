@@ -25,6 +25,7 @@ const Details = () => {
       title: item.title,
       originalPrice: state.originalPrice,
       random: state.random,
+      quantity: 1,
     });
   };
 

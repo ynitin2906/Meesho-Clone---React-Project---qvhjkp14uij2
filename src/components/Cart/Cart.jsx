@@ -1,17 +1,36 @@
 import "./Cart.css";
-import React, { useContext } from "react";
-// import { FaPlus } from "react-icons/fa";
-// import { FaMinus } from "react-icons/fa";
+import React, { useContext, useState } from "react";
 import { MyContext } from "../../App";
 import emptyCart from "../../images/emptyCart.png";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cartItems } = useContext(MyContext);
-  console.log(cartItems);
+  const [items, setItems] = useState(cartItems);
+
+  const incrementQuantity = (itemId) => {
+    const updatedItems = items.map((item) => {
+      if (item.id === itemId) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  };
+
+  const decrementQuantity = (itemId) => {
+    const updatedItems = items.map((item) => {
+      if (item.id === itemId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  };
+
   return (
     <>
-      {cartItems.length === 0 ? (
+      {items.length === 0 ? (
         <div className="empty-cart">
           <img alt="img" src={emptyCart} />
           Your cart is empty
@@ -24,7 +43,7 @@ const Cart = () => {
       ) : (
         <div className="cart-container">
           <div className="cart-item-container">
-            {cartItems.map((item) => (
+            {items.map((item) => (
               <div className="cart-item" key={item.id}>
                 <div className="cart-item-image">
                   <img src={item.image} alt="img" />
@@ -33,12 +52,24 @@ const Cart = () => {
                   <p className="headings">{item.title}</p>
                   <p className="quantity-box">
                     Quantity:
-                    <span className="quantity">1</span>
+                    <span className="quantity">{item.quantity}</span>
                     <span className="plus-minus">
-                      <button className="plus-minus-buttons">-</button>
+                      <button
+                        id="increment"
+                        className="plus-minus-buttons"
+                        onClick={() => decrementQuantity(item.id)}
+                      >
+                        -
+                      </button>
                     </span>
                     <span className="plus-minus">
-                      <button className="plus-minus-buttons">+</button>
+                      <button
+                        id="decrement"
+                        className="plus-minus-buttons"
+                        onClick={() => incrementQuantity(item.id)}
+                      >
+                        +
+                      </button>
                     </span>
                   </p>
                   <span className="main-price">Price:{item.price}</span>
@@ -52,9 +83,25 @@ const Cart = () => {
           <div className="sub-total-container">
             <div className="total-price-box">
               <p className="headings">Price Details</p>
-              <p>Total Product Price : 1000 </p>
+              <p>
+                Total Product Price :
+                {items
+                  .reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )
+                  .toFixed(2)}
+              </p>
               <p className="total-discount">Total Discounts : 100</p>
-              <p className="headings">Order Total : 900</p>
+              <p className="headings">
+                Order Total :
+                {items
+                  .reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )
+                  .toFixed(2)}
+              </p>
               <button className="continue-btn">Continue</button>
             </div>
           </div>
@@ -63,4 +110,5 @@ const Cart = () => {
     </>
   );
 };
+
 export default Cart;

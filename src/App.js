@@ -24,6 +24,7 @@ function App() {
         title: item.title,
         originalPrice: item.originalPrice,
         random: item.random,
+        quantity: 1,
       },
     ]);
   };
