@@ -3,26 +3,47 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import data from "./data";
 
 export const MyContext = createContext();
 
 function App() {
   const universalData = data;
-  const signUpData = [];
+  const [isToastShown, setIsToastShown] = useState(false);
+
+  const onToastShownChange = (key) => {
+    setIsToastShown(key);
+  };
+
+  const [signUpData, setSignUpData] = useState([]);
   const [isSingnedUp, setIsSignedUp] = useState(false);
+
   const onSignedUpValueChange = (key) => {
     setIsSignedUp(key);
   };
+  const addSignUpData = (newSignUpData) => {
+    setSignUpData((prevData) => [...prevData, newSignUpData]);
+  };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  useEffect(() => {
+    const storedData = localStorage.getItem("signUpData");
+    if (storedData) {
+      setSignUpData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("signUpData", JSON.stringify(signUpData));
+  }, [signUpData]);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onLoggedInValueChange = (key) => {
     setIsLoggedIn(key);
   };
 
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const addToCart = (item) => {
     setCartItems([
@@ -50,13 +71,16 @@ function App() {
         signUpData,
         isSingnedUp,
         onSignedUpValueChange,
+        addSignUpData,
+        isToastShown,
+        onToastShownChange,
       }}
     >
       <BrowserRouter>
         <div className="App">
-          <NavBar />
+          <NavBar className="navbar" />
           <AppRoutes />
-          {/* <Footer/> */}
+          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     </MyContext.Provider>

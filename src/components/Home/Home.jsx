@@ -2,17 +2,26 @@ import "./Home.css";
 import React, { useContext, useEffect } from "react";
 import ProductList from "../ProductList/ProductList";
 import { MyContext } from "../../App";
-// import ProductCard from "../ProductCard/ProductCard";
-// import Details from "../Details/Details";
-// import Cart from "../Cart/Cart";
-// import SignUp from "../SignUp/SignUp";
-// import NotFound from "../NotFound/NotFound";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MiniNav from "../MiniNav/MiniNav";
 
 const Home = () => {
   const mycontext = useContext(MyContext);
-
+  useEffect(() => {
+    if (mycontext.isLoggedIn && !mycontext.isToastShown) {
+      toast.success("Logged In Successfully!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      mycontext.onToastShownChange(true);
+    }
+  }, [mycontext.isLoggedIn, mycontext.isToastShown]);
   useEffect(() => {
     if (mycontext.isSingnedUp) {
       toast.success("Signed up successfully!", {
@@ -31,20 +40,7 @@ const Home = () => {
   return (
     <div>
       <ToastContainer />
-      <nav>
-        <ul>
-          <li>Women Ethinic</li>
-          <li>Women Western</li>
-          <li>Men</li>
-          <li>Kids</li>
-          <li>Home & Kitchen</li>
-          <li>Beauty & Health</li>
-          <li>Jwellery & Accessories</li>
-          <li>Bags & Footwear</li>
-          <li>Electronics</li>
-        </ul>
-      </nav>
-
+      <MiniNav />
       {/* -----------------------images------------------ */}
 
       <div className="topCategoriesFrom">
@@ -83,10 +79,6 @@ const Home = () => {
       </div>
 
       <ProductList />
-      {/* <Details /> */}
-      {/* <Cart /> */}
-      {/* <SignUp /> */}
-      {/* <NotFound /> */}
     </div>
   );
 };

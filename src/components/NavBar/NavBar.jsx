@@ -8,9 +8,9 @@ import cart from "../../images/cart.png";
 import mobile from "../../images/mobile.png";
 import user from "../../images/user.png";
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
-    <div>
+    <div className={props.className}>
       <header className="header">
         <div className="headerLeft">
           <div className="logoContainer">
@@ -81,12 +81,15 @@ const NavBar = () => {
 
           <div className="profileAndCart">
             <div className="profileContainer">
+              <div className="profileHoverBtnContainer">
+                <h3>Hello User</h3>
+              </div>
               <div className="profileIcon">
-                <Link to="/signup">
+                <Link to="/login">
                   <img alt="img" src={user} />
                 </Link>
               </div>
-              <Link to="/signup">
+              <Link to="/login">
                 <p>Profile</p>
               </Link>
             </div>
