@@ -15,12 +15,12 @@ const NavBar = () => {
         <div className="headerLeft">
           <div className="logoContainer">
             <Link to="/">
-              <img src={logo} />
+              <img alt="img" src={logo} />
             </Link>
           </div>
           <div className="searchInputContainer">
             <div className="searchIcon">
-              <img src={search} />
+              <img alt="img" src={search} />
             </div>
 
             <form action="" id="inputForm">
@@ -36,7 +36,7 @@ const NavBar = () => {
               <div className="listofRecent">
                 <div className="recentItem">
                   <div className="recentIcon">
-                    <img src={recent} />
+                    <img alt="img" src={recent} />
                   </div>
                   <p>abcd</p>
                 </div>
@@ -48,17 +48,29 @@ const NavBar = () => {
         <div className="headerRight">
           <div className="downloadContainer">
             <div className="mobileIcon">
-              <img src={mobile} />
+              <img alt="img" src={mobile} />
             </div>
             <p>Download App</p>
 
             <div className="downloadHoverBtnContainer">
               <h3>Download From</h3>
-              <a href="" className="downloadBtn">
-                <img src="https://images.meesho.com/images/pow/playstore-icon-big.webp" />
+              <a
+                href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
+                className="downloadBtn"
+              >
+                <img
+                  alt="img"
+                  src="https://images.meesho.com/images/pow/playstore-icon-big.webp"
+                />
               </a>
-              <a href="" className="downloadBtn">
-                <img src="https://images.meesho.com/images/pow/appstore-icon-big.webp" />
+              <a
+                href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
+                className="downloadBtn"
+              >
+                <img
+                  alt="img"
+                  src="https://images.meesho.com/images/pow/appstore-icon-big.webp"
+                />
               </a>
             </div>
           </div>
@@ -71,7 +83,7 @@ const NavBar = () => {
             <div className="profileContainer">
               <div className="profileIcon">
                 <Link to="/signup">
-                  <img src={user} />
+                  <img alt="img" src={user} />
                 </Link>
               </div>
               <Link to="/signup">
@@ -81,7 +93,7 @@ const NavBar = () => {
             <div className="cartContainer">
               <div className="cartIcon">
                 <Link to="/cart">
-                  <img src={cart} />
+                  <img alt="img" src={cart} />
                 </Link>
               </div>
               <Link to="/cart">

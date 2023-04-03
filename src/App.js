@@ -10,6 +10,16 @@ export const MyContext = createContext();
 
 function App() {
   const universalData = data;
+  const signUpData = [];
+  const [isSingnedUp, setIsSignedUp] = useState(false);
+  const onSignedUpValueChange = (key) => {
+    setIsSignedUp(key);
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const onLoggedInValueChange = (key) => {
+    setIsLoggedIn(key);
+  };
 
   const [cartItems, setCartItems] = useState([]);
   console.log(cartItems);
@@ -29,11 +39,6 @@ function App() {
     ]);
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const onLoggedInValueChange = (key) => {
-    setIsLoggedIn(key);
-  };
-
   return (
     <MyContext.Provider
       value={{
@@ -42,6 +47,9 @@ function App() {
         onLoggedInValueChange,
         cartItems,
         addToCart,
+        signUpData,
+        isSingnedUp,
+        onSignedUpValueChange,
       }}
     >
       <BrowserRouter>

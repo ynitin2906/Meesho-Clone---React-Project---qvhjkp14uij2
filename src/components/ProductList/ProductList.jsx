@@ -1,8 +1,9 @@
 import "./ProductList.css";
 import "../ProductCard/ProductCard.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
+// import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import axios from "axios";
+// import axios from "axios";
 import { MyContext } from "../../App";
 
 const ProductList = () => {

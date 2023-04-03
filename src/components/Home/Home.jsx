@@ -1,15 +1,36 @@
 import "./Home.css";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ProductList from "../ProductList/ProductList";
-import ProductCard from "../ProductCard/ProductCard";
-import Details from "../Details/Details";
-import Cart from "../Cart/Cart";
-import SignUp from "../SignUp/SignUp";
-import NotFound from "../NotFound/NotFound";
+import { MyContext } from "../../App";
+// import ProductCard from "../ProductCard/ProductCard";
+// import Details from "../Details/Details";
+// import Cart from "../Cart/Cart";
+// import SignUp from "../SignUp/SignUp";
+// import NotFound from "../NotFound/NotFound";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
+  const mycontext = useContext(MyContext);
+
+  useEffect(() => {
+    if (mycontext.isSingnedUp) {
+      toast.success("Signed up successfully!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    mycontext.onSignedUpValueChange(false);
+  }, [mycontext.isSingnedUp]);
+
   return (
     <div>
+      <ToastContainer />
       <nav>
         <ul>
           <li>Women Ethinic</li>
