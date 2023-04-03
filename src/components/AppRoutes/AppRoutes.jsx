@@ -10,7 +10,7 @@ import { Navigate } from "react-router";
 import { MyContext } from "../../App";
 import Checkout from "../Checkout/Checkout";
 import LogIn from "../LogIn/LogIn";
-import UserInfo from "../UserInfo/UserInfo";
+import UserProfile from "../UserProfile/UserProfile";
 
 const AppRoutes = () => {
   const mycontext = useContext(MyContext);
@@ -23,7 +23,7 @@ const AppRoutes = () => {
       />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<LogIn />} />
-      <Route path="/userinfo" element={<UserInfo />} />
+      <Route path="/userprofile" element={<UserProfile />} />
       <Route path="/details/:id" element={<Details />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="*" element={<NotFound />} />

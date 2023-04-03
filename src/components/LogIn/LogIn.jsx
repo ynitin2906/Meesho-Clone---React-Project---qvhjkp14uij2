@@ -27,6 +27,7 @@ const LogIn = () => {
     );
     if (user) {
       mycontext.onLoggedInValueChange(true);
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
       navigate("/");
     } else {
       // console.log("failed");

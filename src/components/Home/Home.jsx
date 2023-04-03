@@ -8,10 +8,11 @@ import MiniNav from "../MiniNav/MiniNav";
 
 const Home = () => {
   const mycontext = useContext(MyContext);
+
   useEffect(() => {
     if (mycontext.isLoggedIn && !mycontext.isToastShown) {
       toast.success("Logged In Successfully!", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 2000,
         hideProgressBar: true,
         closeOnClick: true,

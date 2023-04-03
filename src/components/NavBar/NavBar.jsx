@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/meesho.png";
 import search from "../../images/search.png";
@@ -7,8 +7,10 @@ import recent from "../../images/recent.png";
 import cart from "../../images/cart.png";
 import mobile from "../../images/mobile.png";
 import user from "../../images/user.png";
+import { MyContext } from "../../App";
 
 const NavBar = (props) => {
+  const mycontext = useContext(MyContext);
   return (
     <div className={props.className}>
       <header className="header">
@@ -76,23 +78,36 @@ const NavBar = (props) => {
           </div>
 
           <div className="becomeSupplier">
-            <p>Become a Supplier</p>
+            <a href="https://supplier.meesho.com/?utm_source=meesho&utm_medium=mweb&utm_campaign=footer">
+              Become a Supplier
+            </a>
           </div>
 
           <div className="profileAndCart">
-            <div className="profileContainer">
-              <div className="profileHoverBtnContainer">
-                <h3>Hello User</h3>
-              </div>
-              <div className="profileIcon">
-                <Link to="/login">
-                  <img alt="img" src={user} />
+            {mycontext.isLoggedIn ? (
+              <div className="profileContainer">
+                <div className="profileIcon">
+                  <Link to="/userprofile">
+                    <img alt="img" src={user} />
+                  </Link>
+                </div>
+                <Link to="/userprofile">
+                  <p>Profile</p>
                 </Link>
               </div>
-              <Link to="/login">
-                <p>Profile</p>
-              </Link>
-            </div>
+            ) : (
+              <div className="profileContainer">
+                <div className="profileIcon">
+                  <Link to="/login">
+                    <img alt="img" src={user} />
+                  </Link>
+                </div>
+                <Link to="/login">
+                  <p>Profile</p>
+                </Link>
+              </div>
+            )}
+
             <div className="cartContainer">
               <div className="cartIcon">
                 <Link to="/cart">
