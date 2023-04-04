@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/meesho.png";
 import search from "../../images/search.png";
@@ -11,6 +11,20 @@ import { MyContext } from "../../App";
 
 const NavBar = (props) => {
   const mycontext = useContext(MyContext);
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  const handleInputChange = (e) => {
+    mycontext.setSearchTerm(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const searchValue = mycontext.searchTerm.trim();
+    if (searchValue.length > 0 && !recentSearches.includes(searchValue)) {
+      setRecentSearches([searchValue, ...recentSearches.slice(0, 4)]);
+    }
+  };
+
   return (
     <div className={props.className}>
       <header className="header">
@@ -25,23 +39,27 @@ const NavBar = (props) => {
               <img alt="img" src={search} />
             </div>
 
-            <form action="" id="inputForm">
+            <form onSubmit={handleSearchSubmit} action="" id="inputForm">
               <input
                 className="inputSearch"
                 type="text"
                 placeholder="Try Saree, Kurti etc."
+                value={mycontext.searchTerm}
+                onChange={handleInputChange}
               />
             </form>
 
             <div className="searchRecentModal">
               <h3>Recent Searches</h3>
               <div className="listofRecent">
-                <div className="recentItem">
-                  <div className="recentIcon">
-                    <img alt="img" src={recent} />
+                {recentSearches.map((searchValue) => (
+                  <div className="recentItem">
+                    <div className="recentIcon">
+                      <img alt="img" src={recent} />
+                    </div>
+                    <p>{searchValue}</p>
                   </div>
-                  <p>abcd</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>

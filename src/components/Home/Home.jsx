@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div>
       <ToastContainer />
-      <MiniNav />
+      {/* <MiniNav /> */}
       {/* -----------------------images------------------ */}
 
       <div className="topCategoriesFrom">

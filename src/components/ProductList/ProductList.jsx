@@ -24,9 +24,16 @@ const ProductList = () => {
 
   const filteredProducts = mycontext.universalData.filter((product) => {
     if (checkedCategories.length === 0) {
-      return true;
+      return product.category
+        .toLowerCase()
+        .includes(mycontext.searchTerm.toLowerCase());
     } else {
-      return checkedCategories.includes(product.category);
+      return (
+        checkedCategories.includes(product.category) &&
+        product.category
+          .toLowerCase()
+          .includes(mycontext.searchTerm.toLowerCase())
+      );
     }
   });
 
@@ -97,6 +104,14 @@ const ProductList = () => {
                   onChange={handleCategoryChange}
                 />
                 <span>kids</span>
+              </label>
+              <label htmlFor="bags">
+                <input
+                  type="checkbox"
+                  id="bags"
+                  onChange={handleCategoryChange}
+                />
+                <span>bags</span>
               </label>
             </div>
           </aside>

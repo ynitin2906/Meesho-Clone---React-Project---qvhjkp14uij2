@@ -60,6 +60,8 @@ function App() {
     ]);
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <MyContext.Provider
       value={{
@@ -74,6 +76,8 @@ function App() {
         addSignUpData,
         isToastShown,
         onToastShownChange,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       <BrowserRouter>
