@@ -3,10 +3,18 @@ import React, { useContext } from "react";
 import usericon from "../../images/usericon.png";
 import { MyContext } from "../../App";
 import { useNavigate } from "react-router";
+import { useEffect } from "react";
 
 const UserProfile = () => {
   const mycontext = useContext(MyContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      navigate("/login");
+    }
+  }, [navigate]);
   const handleLogOut = () => {
     localStorage.removeItem("loggedInUser");
     mycontext.onLoggedInValueChange(false);

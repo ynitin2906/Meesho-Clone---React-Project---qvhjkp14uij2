@@ -23,7 +23,12 @@ const AppRoutes = () => {
       />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<LogIn />} />
-      <Route path="/userprofile" element={<UserProfile />} />
+      <Route
+        path="/userprofile"
+        element={
+          mycontext.isLoggedIn ? <UserProfile /> : <Navigate to="/login" />
+        }
+      />
       <Route path="/details/:id" element={<Details />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="*" element={<NotFound />} />

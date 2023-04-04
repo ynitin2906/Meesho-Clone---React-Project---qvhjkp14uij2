@@ -1,30 +1,42 @@
 import "./ProductList.css";
 import "../ProductCard/ProductCard.css";
-import React, { useContext } from "react";
-// import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-// import axios from "axios";
 import { MyContext } from "../../App";
 
 const ProductList = () => {
-  // const [data, setData] = useState([]);
   const mycontext = useContext(MyContext);
-  // const getData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       // "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products?limit=10&page=2"
-  //       "https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products"
-  //     );
-  //     // console.log(response.data);
-  //     setData(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const [checkedCategories, setCheckedCategories] = useState([]);
+  const [sortOption, setSortOption] = useState("");
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const handleCategoryChange = (e) => {
+    const category = e.target.id;
+    if (e.target.checked) {
+      setCheckedCategories([...checkedCategories, category]);
+    } else {
+      setCheckedCategories(checkedCategories.filter((c) => c !== category));
+    }
+  };
+
+  const handleSortOptionChange = (e) => {
+    setSortOption(e.target.value);
+  };
+
+  const filteredProducts = mycontext.universalData.filter((product) => {
+    if (checkedCategories.length === 0) {
+      return true;
+    } else {
+      return checkedCategories.includes(product.category);
+    }
+  });
+
+  if (sortOption === "low-high") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOption === "high-low") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortOption === "rating") {
+    filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
+  }
 
   return (
     <div>
@@ -32,34 +44,59 @@ const ProductList = () => {
         <h1>Products For You</h1>
         <div className="product_container_you_content">
           <aside className="product_category_you_aside">
-            <h3>Category</h3>
-            <div className="search_category_input">
-              <input type="text" placeholder="Search" />
-            </div>
+            <h3 className="category-heading">Sort By</h3>
+            <select
+              className="sort-select"
+              value={sortOption}
+              onChange={handleSortOptionChange}
+            >
+              <option value="">Select an option</option>
+              <option value="low-high">Price: Low to High</option>
+              <option value="high-low">Price: High to Low</option>
+              <option value="rating">Rating</option>
+            </select>
+
+            <h3 className="category-heading">Category</h3>
             <div className="display_Category_list">
-              <label htmlFor="bluetooth">
-                <input type="checkbox" id="bluetooth" />
-                <span>bluetooth Headset</span>
+              <label htmlFor="men">
+                <input
+                  type="checkbox"
+                  id="men's clothing"
+                  onChange={handleCategoryChange}
+                />
+                <span>men's clothing</span>
               </label>
-              <label htmlFor="chains">
-                <input type="checkbox" id="chains" />
-                <span>Men Chains</span>
+              <label htmlFor="jewelery">
+                <input
+                  type="checkbox"
+                  id="jewelery"
+                  onChange={handleCategoryChange}
+                />
+                <span>jewelery</span>
               </label>
-              <label htmlFor="kurtas">
-                <input type="checkbox" id="kurtas" />
-                <span>Kurtas</span>
+              <label htmlFor="electronics">
+                <input
+                  type="checkbox"
+                  id="electronics"
+                  onChange={handleCategoryChange}
+                />
+                <span>electronics</span>
               </label>
-              <label htmlFor="accessories">
-                <input type="checkbox" id="accessories" />
-                <span>Mobile Accessories</span>
+              <label htmlFor="women">
+                <input
+                  type="checkbox"
+                  id="women's clothing"
+                  onChange={handleCategoryChange}
+                />
+                <span>women's clothing</span>
               </label>
-              <label htmlFor="sarees">
-                <input type="checkbox" id="sarees" />
-                <span>sarees</span>
-              </label>
-              <label htmlFor="watch">
-                <input type="checkbox" id="watch" />
-                <span>watch</span>
+              <label htmlFor="kids">
+                <input
+                  type="checkbox"
+                  id="kids"
+                  onChange={handleCategoryChange}
+                />
+                <span>kids</span>
               </label>
             </div>
           </aside>
@@ -67,7 +104,7 @@ const ProductList = () => {
             className="product_category_display"
             id="product_category_displayId"
           >
-            {mycontext.universalData.map((item) => (
+            {filteredProducts.map((item) => (
               <ProductCard
                 id={item.id}
                 key={item.id}

@@ -10,4 +10,9 @@ remove from cart
 price high to low
 recent searches
 
+responsive
+diffrent cart items for diffrent user loggedin
+
 mini nav
+
+authentication
