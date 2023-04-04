@@ -78,7 +78,7 @@ const Details = () => {
                 {item.rating?.rate}
                 <FaStar className="star-symbol" />
               </div>
-              <div className="review">{item.rating?.count} reviews-item</div>
+              <div className="review">{item.rating?.count} reviews</div>
             </div>
           </div>
         </div>

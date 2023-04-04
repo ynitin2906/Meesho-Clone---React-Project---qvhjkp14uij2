@@ -11,10 +11,14 @@
   display: flex;
   justify-content: center;
 }
+
 .small-image {
   height: 80px;
   width: 80px;
   margin-right: 50px;
+  border: 0.8px solid rgba(128, 128, 128, 0.203);
+  border-radius: 5px;
+  padding: 6px;
 }
 .product-info {
   margin-top: 0px;
