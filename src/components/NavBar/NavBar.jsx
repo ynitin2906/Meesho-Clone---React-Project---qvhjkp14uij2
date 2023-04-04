@@ -26,7 +26,8 @@ const NavBar = (props) => {
   };
 
   return (
-    <div className={props.className}>
+    // <div className={props.className}>
+    <div>
       <header className="header">
         <div className="headerLeft">
           <div className="logoContainer">

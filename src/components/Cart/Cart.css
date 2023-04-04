@@ -119,3 +119,31 @@
   background: rgb(255, 255, 255);
   border: 1px solid rgb(244, 51, 151);
 }
+@media only screen and (max-width: 376px) and (max-height: 668px) {
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-item-info {
+    width: 300px;
+  }
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 380px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 8%;
+  }
+
+  .sub-total-container {
+    border-left: none;
+    width: 300px;
+    margin-left: 6%;
+  }
+  .continue-btn {
+    width: 225px;
+    margin-left: 5%;
+  }
+}

@@ -1,5 +1,5 @@
 import "./App.css";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
@@ -84,7 +84,7 @@ function App() {
         <div className="App">
           <NavBar className="navbar" />
           <AppRoutes />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </BrowserRouter>
     </MyContext.Provider>

@@ -9,8 +9,6 @@ remove from cart
 diffrent cart items for diffrent user loggedin
 logged in refresh
 
-mini nav
-
-responsive
+pagination
 
 authentication
