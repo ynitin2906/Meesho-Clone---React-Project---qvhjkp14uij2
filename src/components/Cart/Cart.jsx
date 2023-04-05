@@ -88,8 +88,8 @@ const Cart = () => {
                     </span>
                   </p>
                   <span className="main-price">Price:{item.price}</span>
-                  <span className="cutted-price">{item.originalPrice}</span>
-                  <span className="discount-cart-item">{item.random}% off</span>
+                  {/* <span className="cutted-price">{item.originalPrice}</span>
+                  <span className="discount-cart-item">{item.random}% off</span> */}
                   <div>
                     <button
                       onClick={() => {
@@ -108,7 +108,7 @@ const Cart = () => {
           <div className="sub-total-container">
             <div className="total-price-box">
               <p className="headings">Price Details</p>
-              <p>
+              <p className="total-product-price">
                 Total Product Price :
                 {items
                   .reduce(
@@ -117,7 +117,7 @@ const Cart = () => {
                   )
                   .toFixed(2)}
               </p>
-              <p className="total-discount">Total Discounts : 100</p>
+              {/* <p className="total-discount">Total Discounts : 100</p> */}
               <p className="headings">
                 Order Total :
                 {items

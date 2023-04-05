@@ -45,8 +45,12 @@
   margin-right: 10%;
   height: 65vh;
 }
-.total-discount {
+/* .total-discount {
   color: rgb(52, 215, 52);
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.523);
+} */
+.total-product-price {
   padding-bottom: 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.523);
 }
@@ -54,6 +58,7 @@
   font-weight: 500;
   font-size: 18px;
 }
+
 .continue-btn {
   background-color: #0099ff;
   color: #fff;
