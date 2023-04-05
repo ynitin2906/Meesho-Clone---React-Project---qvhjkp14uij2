@@ -174,7 +174,7 @@ a {
 a:hover {
   color: var(--hoverTextColor);
 }
-/* .nav-login-button {
+.nav-login-button {
   background: white;
   font-weight: 300;
   padding: 3px;
@@ -190,7 +190,7 @@ a:hover {
 .nav-login-button:hover {
   background-color: rgb(244, 51, 151);
   color: white;
-} */
+}
 @media only screen and (max-width: 376px) and (max-height: 668px) {
   .logoContainer {
     width: 90px;

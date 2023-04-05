@@ -12,6 +12,7 @@ import { MyContext } from "../../App";
 const NavBar = (props) => {
   const mycontext = useContext(MyContext);
   const [recentSearches, setRecentSearches] = useState([]);
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   const handleInputChange = (e) => {
     mycontext.setSearchTerm(e.target.value);
@@ -102,7 +103,7 @@ const NavBar = (props) => {
           </div>
 
           <div className="profileAndCart">
-            {mycontext.isLoggedIn ? (
+            {localStorage.getItem("LoggedIn") ? (
               <div className="profileContainer">
                 <div className="profileIcon">
                   <Link to="/userprofile">
@@ -110,18 +111,13 @@ const NavBar = (props) => {
                   </Link>
                 </div>
                 <Link to="/userprofile">
-                  <p>Profile</p>
+                  <p>{loggedInUser.email.split("@")[0]}</p>
                 </Link>
               </div>
             ) : (
               <div className="profileContainer">
-                <div className="profileIcon">
-                  <Link to="/login">
-                    <img alt="img" src={user} />
-                  </Link>
-                </div>
                 <Link to="/login">
-                  <p>Profile</p>
+                  <button className="nav-login-button">Log In</button>
                 </Link>
               </div>
             )}

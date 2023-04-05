@@ -26,7 +26,11 @@ const AppRoutes = () => {
       <Route
         path="/userprofile"
         element={
-          mycontext.isLoggedIn ? <UserProfile /> : <Navigate to="/login" />
+          localStorage.getItem("LoggedIn") ? (
+            <UserProfile />
+          ) : (
+            <Navigate to="/login" />
+          )
         }
       />
       <Route path="/details/:id" element={<Details />} />

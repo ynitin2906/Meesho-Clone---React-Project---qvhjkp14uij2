@@ -37,7 +37,7 @@ function App() {
     localStorage.setItem("signUpData", JSON.stringify(signUpData));
   }, [signUpData]);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
   const onLoggedInValueChange = (key) => {
     setIsLoggedIn(key);
   };

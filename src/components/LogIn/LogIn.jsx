@@ -28,6 +28,8 @@ const LogIn = () => {
     if (user) {
       mycontext.onLoggedInValueChange(true);
       localStorage.setItem("loggedInUser", JSON.stringify(user));
+      localStorage.setItem("LoggedIn", true);
+      // console.log(localStorage.getItem("LoggedIn"));
       navigate("/");
     } else {
       // console.log("failed");
