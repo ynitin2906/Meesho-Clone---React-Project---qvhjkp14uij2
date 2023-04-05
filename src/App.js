@@ -88,7 +88,7 @@ function App() {
         <div className="App">
           <NavBar className="navbar" />
           <AppRoutes />
-          <Footer />
+          <Footer className="footer" />
         </div>
       </BrowserRouter>
     </MyContext.Provider>

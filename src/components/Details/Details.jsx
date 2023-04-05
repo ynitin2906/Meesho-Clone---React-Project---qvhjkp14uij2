@@ -1,16 +1,18 @@
 import "./Details.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useContext, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useLocation, useParams } from "react-router";
 import { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { MyContext } from "../../App";
 import data from "../../data";
 
 const Details = () => {
   const params = useParams();
   // console.log(params.id);
-  const { addToCart, universalData } = useContext(MyContext);
+  const { addToCart } = useContext(MyContext);
   const { state } = useLocation();
 
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -35,11 +37,29 @@ const Details = () => {
 
       const cartItemsList =
         JSON.parse(localStorage.getItem(`cartItems_${userId}`)) || [];
-      cartItemsList.push(item);
-      localStorage.setItem(
-        `cartItems_${userId}`,
-        JSON.stringify(cartItemsList)
+
+      const existingCartItemIndex = cartItemsList.findIndex(
+        (cartItem) => cartItem.id === item.id
       );
+      if (existingCartItemIndex !== -1) {
+        return;
+      } else {
+        cartItemsList.push(item);
+        localStorage.setItem(
+          `cartItems_${userId}`,
+          JSON.stringify(cartItemsList)
+        );
+
+        toast.success("Added To Cart", {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
   };
 
@@ -59,7 +79,7 @@ const Details = () => {
     // console.log(desiredItem);
     setItem(desiredItem);
     // getProductData();
-  });
+  }, [params.id]);
   return (
     <div className="container">
       <div className="product-image">
@@ -119,6 +139,7 @@ const Details = () => {
           </ul>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

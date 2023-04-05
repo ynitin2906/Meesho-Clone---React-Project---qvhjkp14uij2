@@ -5,7 +5,7 @@ import emptyCart from "../../images/emptyCart.png";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useContext(MyContext);
+  const { removeFromCart } = useContext(MyContext);
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   const userId = loggedInUser.email;
 
@@ -42,7 +42,9 @@ const Cart = () => {
     });
     setItems(updatedItems);
   };
-
+  const totalProductPrice = items
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toFixed(2);
   return (
     <>
       {items.length === 0 ? (
@@ -109,25 +111,13 @@ const Cart = () => {
             <div className="total-price-box">
               <p className="headings">Price Details</p>
               <p className="total-product-price">
-                Total Product Price :
-                {items
-                  .reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
+                Total Product Price :{totalProductPrice}
               </p>
               {/* <p className="total-discount">Total Discounts : 100</p> */}
-              <p className="headings">
-                Order Total :
-                {items
-                  .reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
-              </p>
-              <button className="continue-btn">Continue</button>
+              <p className="headings">Order Total :{totalProductPrice}</p>
+              <Link to="/checkout" state={{ total: totalProductPrice }}>
+                <button className="continue-btn">Continue</button>
+              </Link>
             </div>
           </div>
         </div>
