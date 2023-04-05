@@ -76,6 +76,8 @@ const NavBar = (props) => {
             <div className="downloadHoverBtnContainer">
               <h3>Download From</h3>
               <a
+                target="_blank"
+                rel="noreferrer"
                 href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
                 className="downloadBtn"
               >
@@ -85,6 +87,8 @@ const NavBar = (props) => {
                 />
               </a>
               <a
+                target="_blank"
+                rel="noreferrer"
                 href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
                 className="downloadBtn"
               >
@@ -97,7 +101,11 @@ const NavBar = (props) => {
           </div>
 
           <div className="becomeSupplier">
-            <a href="https://supplier.meesho.com/?utm_source=meesho&utm_medium=mweb&utm_campaign=footer">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://supplier.meesho.com/?utm_source=meesho&utm_medium=mweb&utm_campaign=footer"
+            >
               Become a Supplier
             </a>
           </div>

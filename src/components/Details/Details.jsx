@@ -10,7 +10,9 @@ const Details = () => {
   const params = useParams();
   const { addToCart } = useContext(MyContext);
   const { state } = useLocation();
-  // console.log(state);
+
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userId = loggedInUser.email;
 
   const [item, setItem] = useState({});
   const descriptionOfItem = item.description
@@ -18,15 +20,25 @@ const Details = () => {
     .filter((line) => line.trim() !== "");
 
   const handleClick = () => {
-    addToCart({
-      id: item.id,
-      price: item.price,
-      image: item.image,
-      title: item.title,
-      originalPrice: state.originalPrice,
-      random: state.random,
-      quantity: 1,
-    });
+    if (localStorage.getItem("LoggedIn")) {
+      addToCart({
+        id: item.id,
+        price: item.price,
+        image: item.image,
+        title: item.title,
+        originalPrice: state.originalPrice,
+        random: state.random,
+        quantity: 1,
+      });
+
+      const cartItemsList =
+        JSON.parse(localStorage.getItem(`cartItems_${userId}`)) || [];
+      cartItemsList.push(item);
+      localStorage.setItem(
+        `cartItems_${userId}`,
+        JSON.stringify(cartItemsList)
+      );
+    }
   };
 
   const getProductData = async () => {

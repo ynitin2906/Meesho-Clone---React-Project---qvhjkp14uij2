@@ -5,9 +5,24 @@ import emptyCart from "../../images/emptyCart.png";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems } = useContext(MyContext);
-  const [items, setItems] = useState(cartItems);
+  const { cartItems, removeFromCart } = useContext(MyContext);
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userId = loggedInUser.email;
 
+  const cartItemsList =
+    JSON.parse(localStorage.getItem(`cartItems_${userId}`)) || [];
+  const [items, setItems] = useState(cartItemsList);
+
+  const removeCartItem = (itemId) => {
+    removeFromCart(itemId);
+
+    const updatedCartItems = cartItemsList.filter((item) => item.id !== itemId);
+    setItems(updatedCartItems);
+    localStorage.setItem(
+      `cartItems_${userId}`,
+      JSON.stringify(updatedCartItems)
+    );
+  };
   const incrementQuantity = (itemId) => {
     const updatedItems = items.map((item) => {
       if (item.id === itemId) {
@@ -75,6 +90,16 @@ const Cart = () => {
                   <span className="main-price">Price:{item.price}</span>
                   <span className="cutted-price">{item.originalPrice}</span>
                   <span className="discount-cart-item">{item.random}% off</span>
+                  <div>
+                    <button
+                      onClick={() => {
+                        removeCartItem(item.id);
+                      }}
+                      className="remove-cart-btn"
+                    >
+                      Remove form cart
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

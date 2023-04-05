@@ -45,6 +45,9 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   console.log(cartItems);
 
+  const removeFromCart = (id) => {
+    setCartItems(cartItems.filter((item) => item.id !== id));
+  };
   const addToCart = (item) => {
     setCartItems([
       ...cartItems,
@@ -70,6 +73,7 @@ function App() {
         onLoggedInValueChange,
         cartItems,
         addToCart,
+        removeFromCart,
         signUpData,
         isSingnedUp,
         onSignedUpValueChange,

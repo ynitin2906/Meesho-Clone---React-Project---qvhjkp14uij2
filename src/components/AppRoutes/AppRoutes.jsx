@@ -19,7 +19,9 @@ const AppRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route
         path="/cart"
-        element={mycontext.isLoggedIn ? <Cart /> : <Navigate to="/login" />}
+        element={
+          localStorage.getItem("LoggedIn") ? <Cart /> : <Navigate to="/login" />
+        }
       />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<LogIn />} />

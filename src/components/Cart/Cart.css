@@ -43,7 +43,7 @@
   width: 400px;
   padding: 20px;
   margin-right: 10%;
-  height: 250px;
+  height: 65vh;
 }
 .total-discount {
   color: rgb(52, 215, 52);
@@ -119,6 +119,21 @@
   background: rgb(255, 255, 255);
   border: 1px solid rgb(244, 51, 151);
 }
+
+.remove-cart-btn {
+  background: white;
+  margin-top: 8px;
+  font-weight: 300;
+  border: 1px solid rgba(255, 0, 0, 0.687);
+  color: rgba(255, 0, 0, 0.653);
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 150px;
+  height: 33px;
+  box-shadow: 0px 0px 5px rgba(243, 241, 241, 0.922);
+}
+
 @media only screen and (max-width: 376px) and (max-height: 668px) {
   .cart-container {
     display: flex;
