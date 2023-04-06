@@ -16,6 +16,8 @@ body {
 .topCategoriesHeading {
   display: flex;
   align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .horizontalLine {
   padding: 1px;
@@ -71,4 +73,10 @@ body {
 .essen-btn {
   margin-left: 100px;
   margin-top: 20px;
+}
+.slide-container {
+  height: 400px;
+}
+.slide-container img {
+  height: 400px;
 }

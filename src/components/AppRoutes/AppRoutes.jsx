@@ -12,6 +12,7 @@ import Checkout from "../Checkout/Checkout";
 import LogIn from "../LogIn/LogIn";
 import UserProfile from "../UserProfile/UserProfile";
 import ThankYou from "../ThankYou/ThankYou";
+import ProductList from "../ProductList/ProductList";
 
 const AppRoutes = () => {
   // const mycontext = useContext(MyContext);
@@ -39,6 +40,7 @@ const AppRoutes = () => {
       <Route path="/details/:id" element={<Details />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/thankyou" element={<ThankYou />} />
+      <Route path="/productlist" element={<ProductList />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

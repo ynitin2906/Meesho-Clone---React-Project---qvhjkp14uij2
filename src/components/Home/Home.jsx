@@ -2,6 +2,7 @@ import "./Home.css";
 import React, { useContext, useEffect } from "react";
 import ProductList from "../ProductList/ProductList";
 import { MyContext } from "../../App";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Fade } from "react-slideshow-image";
@@ -51,18 +52,25 @@ const Home = () => {
       {/* <MiniNav /> */}
       {/* -----------------------images------------------ */}
       <div className="topCategoriesFrom">
+        <div class="topCategoriesHeading">
+          <span class="horizontalLine"></span>
+          <h1>Top Categories to choose from</h1>
+          <span class="horizontalLine"></span>
+        </div>
         <div className="slide-container">
           <Fade>
             {images.map((image, index) => (
-              <div key={index}>
-                <img style={{ width: "100%" }} alt="" src={image} />
+              <div className="img-box" key={index}>
+                <Link to="/productlist">
+                  <img style={{ width: "100%" }} alt="" src={image} />
+                </Link>
               </div>
             ))}
           </Fade>
         </div>
       </div>
-      {/* 
-      <div className="topCategoriesFrom">
+
+      {/* <div className="topCategoriesFrom">
         <div class="topCategoriesHeading">
           <span class="horizontalLine"></span>
           <h1>Top Categories to choose from</h1>
