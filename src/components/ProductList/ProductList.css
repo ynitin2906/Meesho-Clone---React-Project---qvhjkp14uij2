@@ -65,6 +65,36 @@ main {
   background-color: rgba(255, 192, 203, 0.368);
 } */
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  margin: 0 10px;
+}
+
+.page-link {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.page-link:hover,
+.page-link:focus {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.paginate-container {
+  margin: 0 auto;
+}
+
 @media only screen and (max-width: 376px) and (max-height: 668px) {
   /* .Product_container_You {
   } */

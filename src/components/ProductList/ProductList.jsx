@@ -1,6 +1,6 @@
 import "./ProductList.css";
 import "../ProductCard/ProductCard.css";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { MyContext } from "../../App";
 
@@ -8,6 +8,8 @@ const ProductList = () => {
   const mycontext = useContext(MyContext);
   const [checkedCategories, setCheckedCategories] = useState([]);
   const [sortOption, setSortOption] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const handleCategoryChange = (e) => {
     const category = e.target.id;
@@ -21,6 +23,10 @@ const ProductList = () => {
   const handleSortOptionChange = (e) => {
     setSortOption(e.target.value);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [mycontext.searchTerm, checkedCategories, sortOption]);
 
   const filteredProducts = mycontext.universalData.filter((product) => {
     if (checkedCategories.length === 0) {
@@ -36,6 +42,19 @@ const ProductList = () => {
       );
     }
   });
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(filteredProducts.length / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   if (sortOption === "low-high") {
     filteredProducts.sort((a, b) => a.price - b.price);
@@ -119,7 +138,7 @@ const ProductList = () => {
             className="product_category_display"
             id="product_category_displayId"
           >
-            {filteredProducts.map((item) => (
+            {currentItems.map((item) => (
               <ProductCard
                 id={item.id}
                 key={item.id}
@@ -132,6 +151,20 @@ const ProductList = () => {
             ))}
           </main>
         </div>
+      </div>
+      <div className="paginate-container">
+        <ul className="pagination">
+          {pageNumbers.map((pageNumber) => (
+            <li key={pageNumber} className="page-item">
+              <button
+                onClick={() => paginate(pageNumber)}
+                className="page-link"
+              >
+                {pageNumber}
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
