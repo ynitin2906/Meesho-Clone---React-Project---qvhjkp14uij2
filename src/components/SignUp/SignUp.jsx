@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import { MyContext } from "../../App";
 import { useNavigate } from "react-router";
 import "react-toastify/dist/ReactToastify.css";
+import { validateForm } from "../../utils/validation/Register";
 
 const SignUp = () => {
   const mycontext = useContext(MyContext);
@@ -11,6 +12,7 @@ const SignUp = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formErrors, setFormErrors] = useState({});
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,11 +25,16 @@ const SignUp = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const userSignUpData = { email, password };
-    mycontext.addSignUpData(userSignUpData);
-    mycontext.onSignedUpValueChange(true);
 
-    navigate("/");
-    console.log(mycontext.signUpData);
+    const errors = validateForm(userSignUpData);
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      mycontext.addSignUpData(userSignUpData);
+      mycontext.onSignedUpValueChange(true);
+      navigate("/");
+      console.log(mycontext.signUpData);
+    }
   };
 
   return (
@@ -45,10 +52,13 @@ const SignUp = () => {
               autoFocus
               value={email}
               name="email"
-              type="email"
+              type="text"
               id="email-input"
               placeholder="Enter email address.."
             />
+          </div>
+          <div className="error-container">
+            {formErrors.email && <p className="error">{formErrors.email}</p>}
           </div>
           <div className="input-2">
             <label htmlFor="password-input">Password:</label>
@@ -60,6 +70,11 @@ const SignUp = () => {
               id="password-input"
               placeholder="Enter password.."
             />
+          </div>
+          <div className="error-container">
+            {formErrors.password && (
+              <p className="error">{formErrors.password}</p>
+            )}
           </div>
           <button className="continue-signup">Sign Up</button>
         </form>

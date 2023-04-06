@@ -16,7 +16,7 @@ const Details = () => {
   const { state } = useLocation();
 
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  const userId = loggedInUser.email;
+  const userId = loggedInUser?.email;
 
   const [item, setItem] = useState(null);
   const descriptionOfItem = item?.description

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import "./Checkout.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const [contactDetails, setContactDetails] = useState({
     name: "",
@@ -40,77 +41,90 @@ const Checkout = () => {
           <div className="select-delivery-address">
             <h3>Select Delivery Address</h3>
           </div>
+          <form
+            onSubmit={(e) => {
+              navigate("/thankyou", { state: { name: contactDetails.name } });
+            }}
+          >
+            <div className="form-container">
+              <div className="contact-container">
+                <h4>Contact Details</h4>
+                <input
+                  required
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={contactDetails.name}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                  value={contactDetails.phoneNumber}
+                  onChange={InputChangeHandler}
+                />
+              </div>
+              <div className="address-container">
+                <h4>Address Details</h4>
 
-          <div className="form-container">
-            <div className="contact-container">
-              <h4>Contact Details</h4>
-              <input
-                type="text"
-                placeholder="Name"
-                name="name"
-                value={contactDetails.name}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="Phone Number"
-                name="phoneNumber"
-                value={contactDetails.phoneNumber}
-                onChange={InputChangeHandler}
-              />
+                <input
+                  required
+                  type="text"
+                  placeholder="House no./Building Name"
+                  name="houseNumber"
+                  value={addressDetails.houseNumber}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Road Name/ Area/ Colony"
+                  name="roadName"
+                  value={addressDetails.roadName}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Pin Code"
+                  name="pinCode"
+                  value={addressDetails.pinCode}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="City"
+                  name="city"
+                  value={addressDetails.city}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="State"
+                  name="state"
+                  value={addressDetails.state}
+                  onChange={InputChangeHandler}
+                />
+                <input
+                  required
+                  type="text"
+                  placeholder="Nearby Location(optional)"
+                  name="nearbyLocation"
+                  value={addressDetails.nearbyLocation}
+                  onChange={InputChangeHandler}
+                />
+              </div>
+              <div className="button-container">
+                {/* <Link to="/thankyou" state={{ name: contactDetails.name }}> */}
+                <button type="submit">Continue</button>
+                {/* </Link> */}
+              </div>
             </div>
-            <div className="address-container">
-              <h4>Address Details</h4>
-
-              <input
-                type="text"
-                placeholder="House no./Building Name"
-                name="houseNumber"
-                value={addressDetails.houseNumber}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="Road Name/ Area/ Colony"
-                name="roadName"
-                value={addressDetails.roadName}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="Pin Code"
-                name="pinCode"
-                value={addressDetails.pinCode}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="City"
-                name="city"
-                value={addressDetails.city}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="State"
-                name="state"
-                value={addressDetails.state}
-                onChange={InputChangeHandler}
-              />
-              <input
-                type="text"
-                placeholder="Nearby Location(optional)"
-                name="nearbyLocation"
-                value={addressDetails.nearbyLocation}
-                onChange={InputChangeHandler}
-              />
-            </div>
-            <div className="button-container">
-              <Link to="/thankyou" state={{ name: contactDetails.name }}>
-                <button>Continue</button>
-              </Link>
-            </div>
-          </div>
+          </form>
         </div>
 
         <div className="price-details-container">

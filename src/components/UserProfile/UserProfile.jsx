@@ -31,7 +31,7 @@ const UserProfile = () => {
       <div className="welcome-container">
         <div className="welcome-message-container">
           <h2 className="welcome-message">
-            Hi {loggedInUser.email.split("@")[0]} welcome to meesho!!
+            Hi {loggedInUser?.email.split("@")[0]} welcome to meesho!!
           </h2>
         </div>
         <div className="logout-div">
