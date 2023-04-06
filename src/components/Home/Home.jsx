@@ -4,7 +4,7 @@ import ProductList from "../ProductList/ProductList";
 import { MyContext } from "../../App";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import MiniNav from "../MiniNav/MiniNav";
+// import MiniNav from "../MiniNav/MiniNav";
 
 const Home = () => {
   const mycontext = useContext(MyContext);
@@ -22,7 +22,7 @@ const Home = () => {
       });
       mycontext.onToastShownChange(true);
     }
-  }, [mycontext.isLoggedIn, mycontext.isToastShown]);
+  });
   useEffect(() => {
     if (mycontext.isSingnedUp) {
       toast.success("Signed up successfully!", {
@@ -36,7 +36,7 @@ const Home = () => {
       });
     }
     mycontext.onSignedUpValueChange(false);
-  }, [mycontext.isSingnedUp]);
+  });
 
   return (
     <div>
