@@ -4,6 +4,12 @@ import ProductList from "../ProductList/ProductList";
 import { MyContext } from "../../App";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Fade } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import image1 from "../../images/img1.png";
+import image2 from "../../images/img2.png";
+import image3 from "../../images/img3.png";
+
 // import MiniNav from "../MiniNav/MiniNav";
 
 const Home = () => {
@@ -38,14 +44,26 @@ const Home = () => {
     mycontext.onSignedUpValueChange(false);
   });
 
+  const images = [image1, image2, image3];
   return (
     <div>
       <ToastContainer />
       {/* <MiniNav /> */}
       {/* -----------------------images------------------ */}
-
       <div className="topCategoriesFrom">
-        {/* <div class="topCategoriesHeading">
+        <div className="slide-container">
+          <Fade>
+            {images.map((image, index) => (
+              <div key={index}>
+                <img style={{ width: "100%" }} alt="" src={image} />
+              </div>
+            ))}
+          </Fade>
+        </div>
+      </div>
+      {/* 
+      <div className="topCategoriesFrom">
+        <div class="topCategoriesHeading">
           <span class="horizontalLine"></span>
           <h1>Top Categories to choose from</h1>
           <span class="horizontalLine"></span>
@@ -76,8 +94,8 @@ const Home = () => {
             <img src="https://images.meesho.com/images/marketing/1649760786763.webp" />
             <img src="https://images.meesho.com/images/marketing/1664364898513.webp" />
           </div>
-        </div> */}
-      </div>
+        </div>
+      </div> */}
 
       <ProductList />
     </div>
