@@ -42,6 +42,15 @@ const ProductList = () => {
       );
     }
   });
+
+  if (sortOption === "low-high") {
+    filteredProducts.sort((a, b) => a.price - b.price);
+  } else if (sortOption === "high-low") {
+    filteredProducts.sort((a, b) => b.price - a.price);
+  } else if (sortOption === "rating") {
+    filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
+  }
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProducts.slice(
@@ -54,14 +63,6 @@ const ProductList = () => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(filteredProducts.length / itemsPerPage); i++) {
     pageNumbers.push(i);
-  }
-
-  if (sortOption === "low-high") {
-    filteredProducts.sort((a, b) => a.price - b.price);
-  } else if (sortOption === "high-low") {
-    filteredProducts.sort((a, b) => b.price - a.price);
-  } else if (sortOption === "rating") {
-    filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
   }
 
   return (
