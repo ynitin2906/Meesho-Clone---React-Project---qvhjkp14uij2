@@ -10,6 +10,9 @@ import "react-slideshow-image/dist/styles.css";
 import image1 from "../../images/img1.png";
 import image2 from "../../images/img2.png";
 import image3 from "../../images/img3.png";
+import banner1 from "../../images/banner1.png";
+import banner2 from "../../images/banner2.png";
+import banner3 from "../../images/banner3.png";
 
 // import MiniNav from "../MiniNav/MiniNav";
 
@@ -49,13 +52,25 @@ const Home = () => {
   return (
     <div>
       <ToastContainer />
-      {/* <MiniNav /> */}
       {/* -----------------------images------------------ */}
+      <div className="primBannerContainer">
+        <div className="img-container">
+          <a
+            style={{ width: "100%", display: "block" }}
+            target="_blank"
+            rel="noreferrer"
+            href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
+            className="downloadBtn"
+          >
+            <img style={{ width: "100%" }} alt="" src={banner1} />
+          </a>
+        </div>
+      </div>
       <div className="topCategoriesFrom">
-        <div class="topCategoriesHeading">
-          <span class="horizontalLine"></span>
+        <div className="topCategoriesHeading">
+          <span className="horizontalLine"></span>
           <h1>Top Categories to choose from</h1>
-          <span class="horizontalLine"></span>
+          <span className="horizontalLine"></span>
         </div>
         <div className="slide-container">
           <Fade>
@@ -70,40 +85,32 @@ const Home = () => {
         </div>
       </div>
 
-      {/* <div className="topCategoriesFrom">
-        <div class="topCategoriesHeading">
-          <span class="horizontalLine"></span>
-          <h1>Top Categories to choose from</h1>
-          <span class="horizontalLine"></span>
+      <div className="bannerContainer">
+        <div className="img-container">
+          <a
+            style={{ width: "100%", display: "block" }}
+            target="_blank"
+            rel="noreferrer"
+            href="https://apps.apple.com/us/app/meesho/id1457958492"
+            className="downloadBtn"
+          >
+            <img style={{ width: "100%" }} alt="" src={banner2} />
+          </a>
         </div>
-        <div class="topCategoreisImage">
-          <img src="https://images.meesho.com/images/marketing/1649760442043.webp" />
-          <img src="https://images.meesho.com/images/marketing/1649760423313.webp" />
-          <img src="https://images.meesho.com/images/marketing/1649759799809.webp" />
+        <div className="img-container">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://supplier.meesho.com/?utm_source=meesho&utm_medium=mweb&utm_campaign=footer"
+          >
+            <img
+              style={{ width: "100%", height: "200px" }}
+              alt=""
+              src={banner3}
+            />
+          </a>
         </div>
-
-        <div class="essentialContaienr">
-          <img
-            src="https://images.meesho.com/images/marketing/1664368165450.webp"
-            class="essen-btn"
-          />
-
-          <div class="essential_item">
-            <img src="https://images.meesho.com/images/marketing/1649760808952.webp" />
-            <img src="https://images.meesho.com/images/marketing/1664364866805.webp" />
-          </div>
-
-          <div class="essential_item">
-            <img src="https://images.meesho.com/images/marketing/1649760703179.webp" />
-            <img src="https://images.meesho.com/images/marketing/1664364917657.webp" />
-          </div>
-
-          <div class="essential_item">
-            <img src="https://images.meesho.com/images/marketing/1649760786763.webp" />
-            <img src="https://images.meesho.com/images/marketing/1664364898513.webp" />
-          </div>
-        </div>
-      </div> */}
+      </div>
 
       <ProductList />
     </div>

@@ -1,7 +1,7 @@
 import "./NavBar.css";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../images/meesho.png";
+import logo from "../../images/logo.png";
 import search from "../../images/search.png";
 import recent from "../../images/recent.png";
 import cart from "../../images/cart.png";
@@ -44,7 +44,7 @@ const NavBar = (props) => {
               <input
                 className="inputSearch"
                 type="text"
-                placeholder="Try Saree, Kurti etc."
+                placeholder="Try shirt, jacket, gold etc."
                 value={mycontext.searchTerm}
                 onChange={handleInputChange}
               />
@@ -89,7 +89,7 @@ const NavBar = (props) => {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://play.google.com/store/apps/details?id=com.meesho.supply&pid=pow_website&c=pow"
+                href="https://apps.apple.com/us/app/meesho/id1457958492"
                 className="downloadBtn"
               >
                 <img

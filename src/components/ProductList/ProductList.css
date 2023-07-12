@@ -1,8 +1,10 @@
 .Product_container_You {
   min-height: 500px;
   /* background-color: #ccc; */
+
   padding: 10px;
 }
+
 .product_container_you_content {
   display: grid;
   grid-template-columns: 280px 1fr;

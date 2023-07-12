@@ -6,3 +6,13 @@
   background-color: white;
   z-index: 999;
 }
+.mininav {
+  position: sticky;
+  top: 73px;
+  background-color: white;
+  z-index: 100;
+}
+:root {
+  --hoverTextColor1: rgb(159, 32, 137);
+  --textColor: rgb(87, 85, 85);
+}

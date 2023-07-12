@@ -28,19 +28,31 @@ const ProductList = () => {
     setCurrentPage(1);
   }, [mycontext.searchTerm, checkedCategories, sortOption]);
 
+  // const filteredProducts = mycontext.universalData.filter((product) => {
+  //   if (checkedCategories.length === 0) {
+  //     return product.category
+  //       .toLowerCase()
+  //       .includes(mycontext.searchTerm.toLowerCase());
+  //   } else {
+  //     return (
+  //       checkedCategories.includes(product.category) &&
+  //       product.category
+  //         .toLowerCase()
+  //         .includes(mycontext.searchTerm.toLowerCase())
+  //     );
+  //   }
+  // });
+
   const filteredProducts = mycontext.universalData.filter((product) => {
-    if (checkedCategories.length === 0) {
-      return product.category
-        .toLowerCase()
-        .includes(mycontext.searchTerm.toLowerCase());
-    } else {
-      return (
-        checkedCategories.includes(product.category) &&
-        product.category
-          .toLowerCase()
-          .includes(mycontext.searchTerm.toLowerCase())
-      );
-    }
+    const searchTerm = mycontext.searchTerm.toLowerCase();
+    const categoryMatch =
+      checkedCategories.length === 0 ||
+      checkedCategories.includes(product.category);
+    const titleMatch = product.title.toLowerCase().includes(searchTerm);
+    const catgMatch = product.category.toLowerCase().includes(searchTerm);
+    const categoryTitleMatch =
+      (categoryMatch && titleMatch) || (categoryMatch && catgMatch);
+    return categoryTitleMatch;
   });
 
   if (sortOption === "low-high") {
@@ -68,10 +80,12 @@ const ProductList = () => {
   return (
     <div>
       <div className="Product_container_You">
-        <h1>Products For You</h1>
+        <h1 style={{ fontWeight: 400 }}>Products For You</h1>
         <div className="product_container_you_content">
           <aside className="product_category_you_aside">
-            <h3 className="category-heading">Sort By</h3>
+            <h3 style={{ fontWeight: 350 }} className="category-heading">
+              Sort By
+            </h3>
             <select
               className="sort-select"
               value={sortOption}
@@ -83,7 +97,9 @@ const ProductList = () => {
               <option value="rating">Rating</option>
             </select>
 
-            <h3 className="category-heading">Category</h3>
+            <h3 style={{ fontWeight: 350 }} className="category-heading">
+              Category
+            </h3>
             <div className="display_Category_list">
               <label htmlFor="men">
                 <input

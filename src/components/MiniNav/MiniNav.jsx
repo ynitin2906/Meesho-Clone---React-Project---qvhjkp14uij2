@@ -1,20 +1,39 @@
+import { Link } from "react-router-dom";
 import "./MiniNav.css";
 import React from "react";
 
-const MiniNav = () => {
+const MiniNav = (props) => {
   return (
-    <div>
+    <div className={props.className}>
       <nav>
         <ul>
-          <li>Women Ethinic</li>
-          <li>Women Western</li>
-          <li>Men</li>
-          <li>Kids</li>
-          <li>Home & Kitchen</li>
-          <li>Beauty & Health</li>
-          <li>Jwellery & Accessories</li>
-          <li>Bags & Footwear</li>
-          <li>Electronics</li>
+          <Link to="/productlist">
+            <li>Women Ethinic</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Women Western</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Men</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Kids</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Home & Kitchen</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Beauty & Health</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Jwellery & Accessories</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Bags & Footwear</li>
+          </Link>
+          <Link to="/productlist">
+            <li>Electronics</li>
+          </Link>
         </ul>
       </nav>
     </div>

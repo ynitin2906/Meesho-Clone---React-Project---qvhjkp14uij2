@@ -1,6 +1,7 @@
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
+import MiniNav from "./components/MiniNav/MiniNav";
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
 import { createContext, useEffect, useState } from "react";
@@ -87,6 +88,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavBar className="navbar" />
+          <MiniNav className="mininav" />
           <AppRoutes />
           <Footer className="footer" />
         </div>
