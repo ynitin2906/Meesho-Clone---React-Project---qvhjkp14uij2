@@ -9,7 +9,7 @@ const ProductList = () => {
   const [checkedCategories, setCheckedCategories] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 12;
 
   const handleCategoryChange = (e) => {
     const category = e.target.id;

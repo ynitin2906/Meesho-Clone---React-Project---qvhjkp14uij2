@@ -8,6 +8,7 @@ import { useEffect } from "react";
 // import axios from "axios";
 import { MyContext } from "../../App";
 import data from "../../data";
+import { Link } from "react-router-dom";
 
 const Details = () => {
   const params = useParams();
@@ -88,14 +89,33 @@ const Details = () => {
             <img className="small-image" alt="img" src={item?.image} />
           </div>
 
-          <div>
+          <div className="big-img-container">
             <img className="big-image" alt="img" src={item?.image} />
+            <div className="cart-btn-container">
+              <button
+                className="add-to-cart"
+                style={{
+                  color: "rgb(159, 32, 137)",
+                  backgroundColor: "white",
+                  border: "1px solid rgb(159, 32, 137)",
+                }}
+                onClick={handleClick}
+              >
+                Add to Cart
+              </button>
+
+              <Link
+                style={{ width: "100%" }}
+                className="buy-now"
+                to="/checkout"
+                state={{ total: item?.price }}
+              >
+                <button className="add-to-cart" onClick={handleClick}>
+                  Buy Now
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="cartContainer">
-          <button className="add-to-cart" onClick={handleClick}>
-            Add to Cart
-          </button>
         </div>
       </div>
 

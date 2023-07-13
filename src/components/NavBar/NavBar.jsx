@@ -13,6 +13,10 @@ const NavBar = (props) => {
   const mycontext = useContext(MyContext);
   const [recentSearches, setRecentSearches] = useState([]);
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const userId = loggedInUser?.email;
+  const cartLength = JSON.parse(
+    localStorage.getItem(`cartItems_${userId}`)
+  )?.length;
 
   const handleInputChange = (e) => {
     mycontext.setSearchTerm(e.target.value);
@@ -131,10 +135,17 @@ const NavBar = (props) => {
             )}
 
             <div className="cartContainer">
-              <div className="cartIcon">
-                <Link to="/cart">
-                  <img alt="img" src={cart} />
-                </Link>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div className="cartIcon">
+                  <Link to="/cart">
+                    <img alt="img" src={cart} />
+                  </Link>
+                </div>
+                {loggedInUser ? (
+                  <span className="cartlength">{cartLength}</span>
+                ) : (
+                  <></>
+                )}
               </div>
               <Link to="/cart">
                 <p>Cart</p>

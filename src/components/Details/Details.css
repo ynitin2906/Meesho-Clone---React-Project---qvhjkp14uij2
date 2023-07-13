@@ -1,7 +1,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 50px;
+  grid-gap: 70px;
   justify-content: center;
   align-items: center;
   /* height: 100vh; */
@@ -16,7 +16,7 @@
   height: 80px;
   width: 80px;
   margin-right: 50px;
-  border: 0.8px solid rgba(128, 128, 128, 0.203);
+  border: 0.8px solid var(--hoverTextColor1);
   border-radius: 5px;
   padding: 6px;
 }
@@ -54,6 +54,9 @@
 .big-image {
   width: 100%;
   height: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.082);
+  border-radius: 8px;
+  padding: 7px;
 }
 
 .product-info {
@@ -72,17 +75,19 @@
 }
 
 .add-to-cart {
-  background-color: #0099ff;
+  background-color: var(--hoverTextColor1);
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
-  width: 325px;
-  margin-left: 31%;
+  width: 100%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
   margin-top: 10px;
 }
+
 .product-size {
   max-width: 700px;
   padding: 10px;
@@ -108,12 +113,12 @@
   padding: 2px;
   border-radius: 10px;
 }
-.product-size button:hover {
+/* .product-size button:hover {
   cursor: pointer;
   background-color: lightpink;
   color: rgb(233, 112, 130);
   border: 1px solid rgba(0, 0, 0, 0.233);
-}
+} */
 .product-card p {
   font-size: 15px;
 }
@@ -147,14 +152,17 @@
 }
 .product-name {
   text-transform: capitalize;
-  font-weight: 150;
   margin-bottom: 0px;
+  color: rgb(139, 139, 163);
+  font-style: normal;
+  font-weight: 400;
   font-size: 18px;
+  line-height: 20px;
 }
 .discount-offer {
   font-size: 15px;
   font-weight: 500;
-  color: rgb(39, 224, 101);
+  color: rgb(35, 187, 117);
 }
 .free-delivery {
   padding: 3px;
@@ -174,7 +182,7 @@
 }
 .rating-number {
   margin: 10px;
-  background-color: rgba(17, 148, 17, 0.61);
+  background-color: rgb(35, 187, 117);
   font-size: 20px;
   color: white;
   border-radius: 10px;
@@ -186,6 +194,15 @@
 .product-description ul {
   list-style-type: disc;
 }
+
+.cart-btn-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 @media only screen and (max-width: 376px) and (max-height: 668px) {
   .container {
     display: flex;
