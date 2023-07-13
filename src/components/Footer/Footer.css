@@ -9,16 +9,16 @@
   padding: 0 15px;
 }
 
-ul {
+.footer-container ul {
   list-style: none;
   padding: 0;
 }
 
-li {
+.footer-container li {
   margin-bottom: 10px;
 }
 
-a {
+.footer-container a {
   text-decoration: none;
   color: #666;
 }
