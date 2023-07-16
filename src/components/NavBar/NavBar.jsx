@@ -36,7 +36,7 @@ const NavBar = (props) => {
   return (
     <div className={props.className}>
       <header className="header">
-        <div className="headerLeft">
+        <div className="headerLeft" style={{ zIndex: "999" }}>
           <div className="logoContainer">
             <Link to="/">
               <img alt="img" src={logo} />
@@ -47,7 +47,12 @@ const NavBar = (props) => {
               <img alt="img" src={search} />
             </div>
 
-            <form onSubmit={handleSearchSubmit} action="" id="inputForm">
+            <form
+              style={{ zIndex: "999" }}
+              onSubmit={handleSearchSubmit}
+              action=""
+              id="inputForm"
+            >
               <input
                 className="inputSearch"
                 type="text"
@@ -74,7 +79,7 @@ const NavBar = (props) => {
         </div>
 
         <div className="headerRight">
-          <div className="downloadContainer">
+          <div className="downloadContainer" style={{ zIndex: "999" }}>
             <div className="mobileIcon">
               <img alt="img" src={mobile} />
             </div>
@@ -155,84 +160,83 @@ const NavBar = (props) => {
               </Link>
             </div>
           </div>
-          <span>
-            <span id="burger">
-              <button
-                className="burger-button"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-              >
-                <span className="burger-icon" />
-              </button>
-              <Menu isOpen={isMenuOpen} right>
-                <li className="burger-list">
-                  <div className="profileAndCart">
-                    {localStorage.getItem("LoggedIn") ? (
-                      <div className="profileContainer">
-                        <div className="profileIcon">
-                          <Link to="/userprofile">
-                            <img alt="img" src={user} />
-                          </Link>
-                        </div>
-                        <Link to="/userprofile">
-                          <p>{loggedInUser.email.split("@")[0]}</p>
-                        </Link>
-                      </div>
-                    ) : (
-                      <div className="profileContainer">
-                        <Link to="/login">
-                          <button className="nav-login-button">Log In</button>
-                        </Link>
-                      </div>
-                    )}
 
-                    <div className="cartContainer">
-                      <div style={{ display: "flex", flexDirection: "row" }}>
-                        <div className="cartIcon">
-                          <Link to="/cart">
-                            <img alt="img" src={cart} />
-                          </Link>
-                        </div>
-                        {loggedInUser ? (
-                          <span className="cartlength">{cartLength}</span>
-                        ) : (
-                          <></>
-                        )}
+          <span id="burger">
+            <button
+              className="burger-button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <span className="burger-icon" />
+            </button>
+            <Menu isOpen={isMenuOpen} right>
+              <li className="burger-list">
+                <div className="profileAndCart">
+                  {localStorage.getItem("LoggedIn") ? (
+                    <div className="profileContainer">
+                      <div className="profileIcon">
+                        <Link to="/userprofile">
+                          <img alt="img" src={user} />
+                        </Link>
                       </div>
-                      <Link to="/cart">
-                        <p>Cart</p>
+                      <Link to="/userprofile">
+                        <p>{loggedInUser.email.split("@")[0]}</p>
                       </Link>
                     </div>
+                  ) : (
+                    <div className="profileContainer">
+                      <Link to="/login">
+                        <button className="nav-login-button">Log In</button>
+                      </Link>
+                    </div>
+                  )}
+
+                  <div className="cartContainer">
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div className="cartIcon">
+                        <Link to="/cart">
+                          <img alt="img" src={cart} />
+                        </Link>
+                      </div>
+                      {loggedInUser ? (
+                        <span className="cartlength">{cartLength}</span>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                    <Link to="/cart">
+                      <p>Cart</p>
+                    </Link>
                   </div>
-                </li>
-                <Link to="/productlist">
-                  <li className="burger-list">Women Ethinic</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Women Western</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Men</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Kids</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Home & Kitchen</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Beauty & Health</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Jwellery & Accessories</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Bags & Footwear</li>
-                </Link>
-                <Link to="/productlist">
-                  <li className="burger-list">Electronics</li>
-                </Link>
-              </Menu>
-            </span>
+                </div>
+              </li>
+              <Link to="/productlist">
+                <li className="burger-list">Women Ethinic</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Women Western</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Men</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Kids</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Home & Kitchen</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Beauty & Health</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Jwellery & Accessories</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Bags & Footwear</li>
+              </Link>
+              <Link to="/productlist">
+                <li className="burger-list">Electronics</li>
+              </Link>
+            </Menu>
           </span>
         </div>
       </header>

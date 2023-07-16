@@ -2,6 +2,5 @@
 -BY NITIN YADAV
 
 todo
---responive for tablet and mobile
---minimav
+--minimav navigate
 --addtocart/gotocart

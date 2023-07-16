@@ -78,77 +78,83 @@ const ProductList = () => {
   }
 
   return (
-    <div>
+    <div className="product-you-cantainer">
       <div className="Product_container_You">
-        <h1 style={{ fontWeight: 400 }}>Products For You</h1>
+        <div className="products-you-heading">
+          <h1 style={{ fontWeight: 400 }}>Products For You</h1>
+        </div>
         <div className="product_container_you_content">
           <aside className="product_category_you_aside">
-            <h3 style={{ fontWeight: 350 }} className="category-heading">
-              Sort By
-            </h3>
-            <select
-              className="sort-select"
-              value={sortOption}
-              onChange={handleSortOptionChange}
-            >
-              <option value="">Select an option</option>
-              <option value="low-high">Price: Low to High</option>
-              <option value="high-low">Price: High to Low</option>
-              <option value="rating">Rating</option>
-            </select>
+            <div className="sort-by-container">
+              <h3 style={{ fontWeight: 350 }} className="category-heading">
+                Sort By
+              </h3>
+              <select
+                className="sort-select"
+                value={sortOption}
+                onChange={handleSortOptionChange}
+              >
+                <option value="">Select an option</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+                <option value="rating">Rating</option>
+              </select>
+            </div>
 
-            <h3 style={{ fontWeight: 350 }} className="category-heading">
-              Category
-            </h3>
-            <div className="display_Category_list">
-              <label htmlFor="men">
-                <input
-                  type="checkbox"
-                  id="men's clothing"
-                  onChange={handleCategoryChange}
-                />
-                <span>men's clothing</span>
-              </label>
-              <label htmlFor="jewelery">
-                <input
-                  type="checkbox"
-                  id="jewelery"
-                  onChange={handleCategoryChange}
-                />
-                <span>jewelery</span>
-              </label>
-              <label htmlFor="electronics">
-                <input
-                  type="checkbox"
-                  id="electronics"
-                  onChange={handleCategoryChange}
-                />
-                <span>electronics</span>
-              </label>
-              <label htmlFor="women">
-                <input
-                  type="checkbox"
-                  id="women's clothing"
-                  onChange={handleCategoryChange}
-                />
-                <span>women's clothing</span>
-              </label>
-              <label htmlFor="kids">
-                <input
-                  type="checkbox"
-                  id="kids"
-                  onChange={handleCategoryChange}
-                />
-                <span>kids</span>
-              </label>
-              <label htmlFor="bags">
-                <input
-                  type="checkbox"
-                  id="bags"
-                  onChange={handleCategoryChange}
-                />
-                <span>bags</span>
-              </label>
+            <div>
+              <h3 style={{ fontWeight: 350 }} className="category-heading">
+                Category
+              </h3>
+              <div className="display_Category_list">
+                <label htmlFor="men">
+                  <input
+                    type="checkbox"
+                    id="men's clothing"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>men's clothing</span>
+                </label>
+                <label htmlFor="jewelery">
+                  <input
+                    type="checkbox"
+                    id="jewelery"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>jewelery</span>
+                </label>
+                <label htmlFor="electronics">
+                  <input
+                    type="checkbox"
+                    id="electronics"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>electronics</span>
+                </label>
+                <label htmlFor="women">
+                  <input
+                    type="checkbox"
+                    id="women's clothing"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>women's clothing</span>
+                </label>
+                <label htmlFor="kids">
+                  <input
+                    type="checkbox"
+                    id="kids"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>kids</span>
+                </label>
+                <label htmlFor="bags">
+                  <input
+                    type="checkbox"
+                    id="bags"
+                    onChange={handleCategoryChange}
+                  />
+                  <span>bags</span>
+                </label>
+              </div>
             </div>
           </aside>
           <main
